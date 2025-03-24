@@ -1,7 +1,8 @@
 provider "aws" {
     region = "us-east-1"
-    access_key = ""
-    secret_key = ""
+    # access_key = ""
+    # secret_key = ""
+    # authenctication credentials are configured via aws cli
 }
 
 resource "aws_instance" "demo_instance" {
