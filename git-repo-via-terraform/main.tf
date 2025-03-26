@@ -13,8 +13,7 @@ provider "github" {
 }
 
 resource "github_repository" "git-terraform-example" {
-  name        = "git-terraform"
+  name        = "terraform"
   description = "My awesome codebase"
-
   visibility = "public"
 }
