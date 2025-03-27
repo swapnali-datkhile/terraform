@@ -1,0 +1,33 @@
+// Below are ways to set enivronment variables:
+- Windows:
+    TF_VAR_machine_type=t2.large
+  Open the Run utility in Windows fron search, type sysdm.cpl. Go advance and click on enivronment variables. Add new variables with below credentials-
+    Variable name = TF_VAR_machine_type
+    Variable value = t2.large
+
+- Linux:
+    export TF_VAR_machine_type=t2.large
+    echo $machine_type
+  printenv is command to check currently set all enivronment variables
+
+- Mac
+  Similar as Linux
+
+
+// Variable precedence
+
+Terraform loads variables in following order, with later sources taking precedence over earlier ones.
+  - Default value set in variables.tf file
+	- Environment Variables
+       - must be set using "TF_VAR_variable_name=value"
+	- The terraform.tfvars file, if present
+       - variable definition file
+	- The terraform.tfvars.json file, if present.
+	- Any *.auto.tfvars or *.auto.tfvars.json files, processed in lexical order of their filenames.
+	- Any -var or -var-file options on command line 
+       - example: terraform plan -var="instance_type=m5.large"
+                  terraform plan -var-file=dev.tfvars
+
+            
+
+  
