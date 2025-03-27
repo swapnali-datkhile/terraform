@@ -8,12 +8,22 @@ resource "aws_instance" "my-ec2" {
   count = 3
 
   tags = {
-    Name = "payments-system-${count.index}"
+    Name = "user-${var.username[count.index]}"
   }
 
 }
 
-resource "aws_iam_user" "name" {
-  name = "payments-user-${count.index}"
+#resource "aws_iam_user" "name" {
+#  name = "payments-user-${count.index}"
+#  count = 3
+#}
+
+variable "username" {
+  type = list
+  default = ["Alice","Bob","John"]
+}
+
+resource "aws_iam_user" "users" {
+  name = var.username[count.index]
   count = 3
 }
